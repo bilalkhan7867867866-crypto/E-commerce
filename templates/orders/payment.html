@@ -1,0 +1,40 @@
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<button id="rzp-button1">
+
+Pay ₹{{ total }}
+
+</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+
+    "key": "{{ razorpay_key_id }}",
+
+    "amount": "{{ total|floatformat:2 }}",
+
+    "currency": "INR",
+
+    "name": "My Ecommerce",
+
+    "order_id": "{{ razorpay_order.id }}",
+
+    "handler": function (response) {
+
+        alert("Payment Successful");
+
+        window.location.href =
+            "/orders/payment-success/?payment_id=" +
+            response.razorpay_payment_id;
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById("rzp-button1").onclick = function(e) {
+    rzp.open();
+    e.preventDefault();
+}
+</script>

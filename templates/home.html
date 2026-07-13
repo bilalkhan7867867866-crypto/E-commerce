@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Welcome To Ecommerce Website</h1><br><br>
+
+<p>
+    Click here to view Products--
+    <a href="{% url 'product_list' %}">
+        View
+    </a>
+</p>
+
+{% endblock %}
