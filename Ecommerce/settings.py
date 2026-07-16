@@ -95,7 +95,8 @@ DEBUG = config("DEBUG", cast=bool)
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default=config("DATABASE_URL",
+                       default="postgresql://postgres:1234@localhost/ecommerce_db")
     )
 }
 
